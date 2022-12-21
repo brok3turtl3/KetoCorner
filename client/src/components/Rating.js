@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types'
 
 const Rating = ({ value, text }) => {
+	console.log(value)
+	console.log(text)
 	return (
 		<div className='rating'>
 			<span>
