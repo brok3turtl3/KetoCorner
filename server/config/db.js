@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 
 
 
-export const connectDB = async () => {
+const connectDB = async () => {
 	try {
 		const connection = await mongoose.connect(process.env.MONGO_URI, {
       useUnifiedTopology: true,
@@ -16,3 +16,5 @@ export const connectDB = async () => {
 		process.exit(1);
 	}
 };
+
+export default connectDB
