@@ -1,15 +1,18 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap';
-import { Navbar, Nav, Container, NavDropdown, NavItem } from 'react-bootstrap';
+import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
+import { logout } from '../actions/userActions';
 
 const Header = () => {
+
+	const dispatch = useDispatch()
 
 	const userLogin = useSelector(state => state.userLogin)
 	const { userInfo} = userLogin
 
 	const logoutHandler= () => {
-		console.log('Logout!')
+		dispatch(logout())
 	}
 	return (
 		<header>
@@ -34,9 +37,9 @@ const Header = () => {
 							</LinkContainer>
 							{userInfo ? (<NavDropdown title={userInfo.name} id='username'>
 								<LinkContainer to='/profile'>
-									<NavItem>Profile</NavItem>
+									<Nav.Link>Profile</Nav.Link>
 								</LinkContainer>
-								<NavItem onClick={logoutHandler} className=''>Logout</NavItem>
+								<Nav.Link onClick={logoutHandler} className=''>Logout</Nav.Link>
 							</NavDropdown>) : <LinkContainer to='/login'>
 								<Nav.Link>
 									<i className='fas fa-user'></i> Sign In
