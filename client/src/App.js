@@ -8,6 +8,7 @@ import HomePage from './screens/HomePage';
 import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
 import LoginScreen from './screens/LoginScreen';
+import RegisterScreen from './screens/Register';
 
 const App = () => {
 	return (
@@ -18,6 +19,7 @@ const App = () => {
 					<h1>Welcome to Keto Corner!</h1>
 					<Routes>
 					<Route path='/login' element={<LoginScreen />} />
+					<Route path='/register' element={<RegisterScreen />} />
 						<Route path='/' element={<HomePage />} />
 						<Route path='/store' element={<Store />} />
 						<Route path='/products/:id' element={<ProductScreen />} />

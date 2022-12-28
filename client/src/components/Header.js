@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap';
@@ -40,11 +40,19 @@ const Header = () => {
 									<Nav.Link>Profile</Nav.Link>
 								</LinkContainer>
 								<Nav.Link onClick={logoutHandler} className=''>Logout</Nav.Link>
-							</NavDropdown>) : <LinkContainer to='/login'>
+							</NavDropdown>) : <Fragment><LinkContainer to='/login'>
 								<Nav.Link>
 									<i className='fas fa-user'></i> Sign In
 								</Nav.Link>
-							</LinkContainer> }
+								
+							</LinkContainer>
+							<LinkContainer to='/register'>
+							<Nav.Link>
+								<i className='fas fa-user'></i> Register
+							</Nav.Link>
+							
+						</LinkContainer></Fragment>
+							 }
 							
 						</Nav>
 					</Navbar.Collapse>
