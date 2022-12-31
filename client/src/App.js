@@ -9,6 +9,10 @@ import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/Register';
+import ShippingScreen from './screens/ShippingScreen';
+import PaymentScreen from './screens/PaymentScreen';
+import PlaceOrder from './screens/PlaceOrder';
+import OrderScreen from './screens/OrderScreen';
 
 const App = () => {
 	return (
@@ -18,12 +22,16 @@ const App = () => {
 				<Container>
 					<h1>Welcome to Keto Corner!</h1>
 					<Routes>
-					<Route path='/login' element={<LoginScreen />} />
-					<Route path='/register' element={<RegisterScreen />} />
+						<Route path='/login' element={<LoginScreen />} />
+						<Route path='/register' element={<RegisterScreen />} />
 						<Route path='/' element={<HomePage />} />
 						<Route path='/store' element={<Store />} />
 						<Route path='/products/:id' element={<ProductScreen />} />
 						<Route path='/cart/:id?' element={<CartScreen />} />
+						<Route path='/shipping' element={<ShippingScreen />} />
+						<Route path='/payment' element={<PaymentScreen />} />
+						<Route path='/placeorder' element={<PlaceOrder />} />
+						<Route path='/orders/:id' element={<OrderScreen />} />
 					</Routes>
 				</Container>
 			</main>
