@@ -1,0 +1,38 @@
+const recipes = [
+	{
+    user: '63a602c8932a21fdc22ded59',
+		name: 'RibEye Steak and Scallops',
+		image: '/images/steak.jpg',
+		description: 'A wonderful Steak.',
+		type: 'Beef/Seafood',
+		totalTime: 35,
+		cookTime: 15,
+		prepTime: 20,
+		numReviews: 3,
+		totalCals: 445,
+		fat: 80,
+		protein: 10,
+		carbs: 10,
+		servings: 2,
+		rating: 4.5,
+	},
+	{
+    user: '63a602c8932a21fdc22ded59',
+		name: 'Eggs on Hash',
+		image: '/images/eggers.jpg',
+		description: 'Not a Keto dish - Ooooyeah!',
+		type: 'Dairy',
+		totalTime: 25,
+		cookTime: 15,
+		prepTime: 10,
+		numReviews: 7,
+		totalCals: 650,
+		fat: 20,
+		protein: 20,
+		carbs: 60,
+		servings: 4,
+		rating: 5,
+	},
+];
+
+export default recipes

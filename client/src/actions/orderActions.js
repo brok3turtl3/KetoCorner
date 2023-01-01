@@ -38,6 +38,10 @@ export const createOrder = (order) => async (dispatch, getState) => {
 			type: ORDER_CREATE_SUCCESS,
 			payload: data,
 		});
+		dispatch({
+			type: ORDER_DETAILS_SUCCESS,
+			payload: data,
+		});
 	} catch (error) {
 		dispatch({
 			type: ORDER_CREATE_FAIL,

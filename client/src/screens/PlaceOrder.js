@@ -152,7 +152,7 @@ const PlaceOrder = () => {
 								className='btn-block'
 								disabled={cart.cartItems.length === 0}
 								onClick={placeOrderHandler}
-							></Button>
+							>Purchase</Button>
 						</ListGroup.Item>
 					</ListGroup>
 				</Col>

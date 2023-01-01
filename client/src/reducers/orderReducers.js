@@ -12,7 +12,7 @@ import {
 	ORDER_PAY_RESET,
 } from '../constants/orderConstants';
 
-export const orderCreateReducer = (state = {}, action) => {
+export const orderCreateReducer = (state = { order: {}}, action) => {
 	switch (action.type) {
 		case ORDER_CREATE_REQUEST:
 			return {
