@@ -71,6 +71,8 @@ const recipeSchema = Schema({
 		required: true,
 		default: 0,
 	},
+	directions: [String],
+	ingredients: [String],
 	reviews: [reviewSchema],
 	price: {
 		type: Number,

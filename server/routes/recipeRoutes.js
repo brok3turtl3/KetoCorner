@@ -4,11 +4,11 @@ const router = express.Router();
 
 import {
 	getRecipes,
-	// getProductById,
+	getRecipeById,
 } from '../controllers/recipeController.js';
 
 router.get('/', getRecipes);
 
-// router.get('/:id', getProductById);
+router.get('/:id', getRecipeById);
 
 export default router;

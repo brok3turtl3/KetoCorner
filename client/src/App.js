@@ -14,19 +14,23 @@ import PaymentScreen from './screens/PaymentScreen';
 import PlaceOrder from './screens/PlaceOrder';
 import OrderScreen from './screens/OrderScreen';
 import RecipesScreen from './screens/RecipesScreen';
+import RecipeDetailsScreen from './screens/RecipeDetailsScreen';
+import ProfileScreen from './screens/ProfileScreen';
 
 const App = () => {
 	return (
 		<Router>
 			<Header />
 			<main className='py-3'>
-				<Container>
+				<Container className='justify-content-center'>
 					<h1>Welcome to Keto Corner!</h1>
 					<Routes>
 						<Route path='/login' element={<LoginScreen />} />
 						<Route path='/register' element={<RegisterScreen />} />
+						<Route path='/profile' element={<ProfileScreen />} />
 						<Route path='/' element={<HomePage />} />
 						<Route path='/recipes' element={<RecipesScreen />} />
+						<Route path='/recipes/:id' element={<RecipeDetailsScreen />} />
 						<Route path='/store' element={<Store />} />
 						<Route path='/products/:id' element={<ProductScreen />} />
 						<Route path='/cart/:id?' element={<CartScreen />} />

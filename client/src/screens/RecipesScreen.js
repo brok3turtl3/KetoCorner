@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
 import Recipe from '../components/Recipe';
 import { listRecipes } from '../actions/recipeActions';
 import Loader from '../components/Loader.js';
-import Message from '../components/Message.js'
+import Message from '../components/Message.js';
 
 const Recipes = () => {
 	const recipeList = useSelector((state) => state.recipeList);
@@ -15,9 +15,11 @@ const Recipes = () => {
 	useEffect(() => {
 		dispatch(listRecipes());
 	}, [dispatch]);
+
 	return (
 		<>
 			<h1>Our Recipes</h1>
+			
 			{loading ? (
 				<Loader />
 			) : error ? (

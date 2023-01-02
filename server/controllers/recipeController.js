@@ -10,21 +10,21 @@ const getRecipes = asyncHandler(async (req, res) => {
   res.json(recipes);
 })
 
-//ENDPOINT  GET api/products/:id
-//PURPOSE   Retrieve product by Id
-//ACCESS    Public
-// const getProductById = asyncHandler(async (req, res) => {
-//   const product = await Product.findById(req.params.id);
+// ENDPOINT  GET api/recipes/:id
+// PURPOSE   Retrieve recipe by Id
+// ACCESS    Public
+const getRecipeById = asyncHandler(async (req, res) => {
+  const recipe = await Recipe.findById(req.params.id);
 
-// 		if (product) {
-// 			res.json(product);
-// 		} else {
-// 			res.status(404);
-// 			throw new Error('Product not found');
-// 		}
-// })
+		if (recipe) {
+			res.json(recipe);
+		} else {
+			res.status(404);
+			throw new Error('Recipe not found');
+		}
+})
 
 export {
   getRecipes,
-  // getProductById
+  getRecipeById
 }
