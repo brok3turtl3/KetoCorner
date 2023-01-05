@@ -20,6 +20,7 @@ const importData = async () => {
 		// await Order.deleteMany();
 		// await User.deleteMany();
 		// await Product.deleteMany();
+		await Recipe.deleteMany();
 
 		// const createdUsers = await User.insertMany(users);
 
