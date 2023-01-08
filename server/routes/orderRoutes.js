@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { protect } from '../middleware/authMiddleware.js';
+import { protect, admin } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
@@ -9,9 +9,11 @@ import {
 	getOrderById,
 	updateOrderToPaid,
 	getMyOrders,
+	getOrders
 } from '../controllers/orderController.js';
 
 router.post('/', protect, addOrderItems);
+router.get('/', protect, admin, getOrders)
 router.get('/myorders', protect, getMyOrders);
 router.get('/:id', protect, getOrderById);
 

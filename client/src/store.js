@@ -4,7 +4,9 @@ import { composeWithDevTools } from '@redux-devtools/extension';
 import {
 	productListReducer,
 	productDetailsReducer,
-	productDeleteReducer
+	productDeleteReducer,
+	productCreateReducer,
+	productUpdateReducer
 } from './reducers/productReducers';
 import {
 	recipeListReducer,
@@ -45,7 +47,9 @@ const reducer = combineReducers({
 	userDelete: userDeleteReducer,
 	userUpdate: userUpdateReducer,
 	orderListMy: orderListMyReducer,
-	productDelete: productDeleteReducer
+	productDelete: productDeleteReducer,
+	productCreate: productCreateReducer,
+	productUpdate: productUpdateReducer
 	
 });
 

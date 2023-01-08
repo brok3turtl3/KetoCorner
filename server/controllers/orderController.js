@@ -83,8 +83,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
 //PURPOSE   Retrieve logged in user orders
 //ACCESS    Private
 const getMyOrders = asyncHandler(async (req, res) => {
-	console.log('HIT!!!!')
-	console.log(req.user._id)
+	
 	try {
 		const orders = await Order.find({ user: req.user._id });
 		
@@ -96,4 +95,20 @@ const getMyOrders = asyncHandler(async (req, res) => {
 	}
 });
 
-export { addOrderItems, getOrderById, updateOrderToPaid, getMyOrders };
+//ENDPOINT  GET api/orders
+//PURPOSE   Retrieve all orders
+//ACCESS    Private / Admin
+const getOrders = asyncHandler(async (req, res) => {
+	
+	try {
+		const orders = await Order.find({}).populate('user', 'id name');
+		
+		res.json(orders);
+	
+	} catch (error) {
+		res.status(404);
+		throw new Error('No orders found');
+	}
+});
+
+export { addOrderItems, getOrderById, updateOrderToPaid, getMyOrders, getOrders };
