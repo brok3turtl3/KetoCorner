@@ -36,6 +36,7 @@ const OrderScreen = () => {
 	}
 
 	useEffect(() => {
+		
 		const addPayPalScript = async () => {
 			const { data: clientId } = await axios.get('/api/config/paypal');
 			const script = document.createElement('script');
@@ -48,7 +49,7 @@ const OrderScreen = () => {
 			document.body.appendChild(script);
 		};
 
-		if (!order || successPay) {
+		if (!order || successPay || order._id !== id) {
 			dispatch({type: ORDER_PAY_RESET})
 			dispatch(getOrderDetails(id));
 		} else if (!order.isPaid) {

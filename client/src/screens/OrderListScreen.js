@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import Message from '../components/Message';
 import Loader from '../components/Message';
 
-import { getOrderList } from '../actions/orderActions';
+import { getOrderList, deliverOrder } from '../actions/orderActions';
 
 const OrderListScreen = () => {
 	const dispatch = useDispatch();
@@ -19,13 +19,20 @@ const OrderListScreen = () => {
 	const userLogin = useSelector((state) => state.userLogin);
 	const { userInfo } = userLogin;
 
+  const orderDeliver = useSelector((state) => state.orderDeliver);
+  const {loading:loadingDeliver, error:errorDeliver, success:successDeliver} = orderDeliver
+
 	useEffect(() => {
 		if (userInfo && userInfo.isAdmin) {
 			dispatch(getOrderList());
 		} else {
 			navigate('/login');
 		}
-	}, [dispatch, navigate, userInfo]);
+	}, [dispatch, navigate, userInfo, successDeliver]);
+
+  const deliverHandler = (id) => {
+dispatch(deliverOrder(id))
+  }
 
 	return (
 		<>
@@ -72,6 +79,9 @@ const OrderListScreen = () => {
 								<td><LinkContainer to={`/orders/${order._id}`}>
                   <Button variant='light' className='btn-sm'>Details</Button>
                   </LinkContainer>
+                  
+                  <Button variant='light' className='btn-sm' onClick={() => deliverHandler(order._id)}>Delivered</Button>
+                  
                   
                   </td>
 							</tr>
