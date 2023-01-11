@@ -21,6 +21,8 @@ import UserEditScreen from './screens/UserEditScreen';
 import ProductListScreen from './screens/ProductListScreen';
 import ProductEditScreen from './screens/ProductEditScreen';
 import OrderListScreen from './screens/OrderListScreen';
+import RecipeListScreen from './screens/RecipeListScreen';
+import RecipeEditScreen from './screens/RecipeEditScreen';
 
 const App = () => {
 	return (
@@ -28,7 +30,7 @@ const App = () => {
 			<Header />
 			<main className='py-3'>
 				<Container className='justify-content-center'>
-					<h1>Welcome to Keto Corner!</h1>
+					
 					<Routes>
 						<Route path='/login' element={<LoginScreen />} />
 						<Route path='/register' element={<RegisterScreen />} />
@@ -45,9 +47,15 @@ const App = () => {
 						<Route path='/admin/userList' element={<UserListScreen />} />
 						<Route path='/admin/user/:id/edit' element={<UserEditScreen />} />
 						<Route path='/admin/productList' element={<ProductListScreen />} />
-						<Route path='/admin/product/:id/edit' element={<ProductEditScreen />} />
+						<Route
+							path='/admin/product/:id/edit'
+							element={<ProductEditScreen />}
+						/>
 						<Route path='/admin/orderList' element={<OrderListScreen />} />
 						<Route path='/orders/:id' element={<OrderScreen />} />
+
+						<Route path='/admin/recipeList' element={<RecipeListScreen />} />
+						<Route path='/admin/recipe/:id/edit' element={<RecipeEditScreen />} />
 					</Routes>
 				</Container>
 			</main>

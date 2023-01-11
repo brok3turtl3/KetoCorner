@@ -43,7 +43,6 @@ const createRecipe = asyncHandler(async (req, res) => {
 		servings: 0,
 		directions: ['Sample Direction #1'],
 		ingredients: ['Sample Ingredient #1'],
-		
 	});
 
 	if (recipe) {
@@ -54,4 +53,34 @@ const createRecipe = asyncHandler(async (req, res) => {
 	}
 });
 
-export { getRecipes, getRecipeById, createRecipe };
+//ENDPOINT  PUT api/recipes/:id
+//PURPOSE   Update a recipe
+//ACCESS    Private / Admin
+const updateRecipe = asyncHandler(async (req, res) => {
+	const recipe = await Recipe.findById(req.params.id);
+
+	if (recipe) {
+		(recipe.name = req.body.name),
+			(recipe.image = req.body.image),
+			(recipe.type = req.body.type),
+			(recipe.description = req.body.description),
+			(recipe.totalTime = req.body.totalTime),
+			(recipe.prepTime = req.body.prepTime),
+			(recipe.cookTime = req.body.cookTime),
+			(recipe.totalCals = req.body.totalCals),
+			(recipe.fat = req.body.fat),
+			(recipe.protein = req.body.protein),
+			(recipe.carbs = req.body.carbs),
+			(recipe.servings = req.body.servings),
+			(recipe.directions = req.body.directions),
+			(recipe.ingredients = req.body.ingredients);
+
+		const newRecipeInfo = await recipe.save();
+		res.json(newRecipeInfo);
+	} else {
+		res.status(404);
+		throw new Error('Product not found');
+	}
+});
+
+export { getRecipes, getRecipeById, createRecipe, updateRecipe };

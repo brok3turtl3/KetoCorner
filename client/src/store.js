@@ -11,6 +11,8 @@ import {
 import {
 	recipeListReducer,
 	recipeDetailsReducer,
+	recipeCreateReducer,
+	recipeUpdateReducer
 } from './reducers/recipeReducers';
 import {
 	userLoginReducer,
@@ -37,6 +39,8 @@ const reducer = combineReducers({
 	productDetails: productDetailsReducer,
 	recipeList: recipeListReducer,
 	recipeDetails: recipeDetailsReducer,
+	recipeCreate: recipeCreateReducer,
+	recipeUpdate: recipeUpdateReducer,
 	cart: cartReducer,
 	userLogin: userLoginReducer,
 	userRegister: userRegisterReducer,

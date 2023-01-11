@@ -120,7 +120,7 @@ export const createProduct = () => async (dispatch, getState) => {
 
 export const updateProduct = (product) => async (dispatch, getState) => {
 
-	console.log('ACTION FIRED!')
+	
 	try {
 		dispatch({
 			type: PRODUCT_UPDATE_REQUEST,

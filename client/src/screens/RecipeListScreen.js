@@ -8,76 +8,72 @@ import Message from '../components/Message';
 import Loader from '../components/Message';
 
 import {
-	listProducts,
-	deleteProduct,
-	createProduct,
-} from '../actions/productActions';
-import { PRODUCT_CREATE_RESET } from '../constants/productConstants';
+	listRecipes,
+  createRecipe
+} from '../actions/recipeActions';
 
-const ProductListScreen = () => {
+import { RECIPE_CREATE_RESET } from '../constants/recipeConstants';
+
+const RecipeListScreen = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 
-	const productList = useSelector((state) => state.productList);
-	const { loading, error, products } = productList;
+	const recipeList = useSelector((state) => state.recipeList);
+	const { loading, error, recipes } = recipeList;
 
 	const userLogin = useSelector((state) => state.userLogin);
 	const { userInfo } = userLogin;
 
-	const productDelete = useSelector((state) => state.productDelete);
-	const {
-		loading: loadingDelete,
-		error: errorDelete,
-		success: successDelete,
-	} = productDelete;
+  const recipeCreate = useSelector((state) => state.recipeCreate);
+  const { loading:loadingCreate, error: errorCreate, success: successCreate, recipe: createdRecipe} = recipeCreate
 
-	const productCreate = useSelector((state) => state.productCreate);
-	const {
-		loading: loadingCreate,
-		error: errorCreate,
-		success: successCreate,
-		product: createdProduct
-	} = productCreate;
+	// const productDelete = useSelector((state) => state.productDelete);
+	// const {
+	// 	loading: loadingDelete,
+	// 	error: errorDelete,
+	// 	success: successDelete,
+	// } = productDelete;
+	
 
-	useEffect(() => {
-		
-		dispatch({type: PRODUCT_CREATE_RESET})
+  useEffect(() => {
+    dispatch({type: RECIPE_CREATE_RESET})
 
-		if (!userInfo.isAdmin) {
+    if (!userInfo.isAdmin) {
 			navigate('/login');
 		}
-		if(successCreate){
-			
-			navigate(`/admin/product/${createdProduct._id}/edit`)
-		}else{
-			dispatch(listProducts())
-		}
-	}, [dispatch, navigate, userInfo, successDelete, successCreate, createdProduct]);
+
+    if(successCreate){
+      navigate(`/admin/recipe/${createdRecipe._id}/edit`)
+    }
+
+    dispatch(listRecipes())
+  },[dispatch, userInfo, successCreate, navigate, createdRecipe])
 
 	const deleteHandler = (id) => {
-		if (window.confirm('Are you sure?')) {
-			dispatch(deleteProduct(id));
-		}
+		// if (window.confirm('Are you sure?')) {
+		// 	dispatch(deleteProduct(id));
+		// }
+    console.log('TEST')
 	};
 
-	const createProductHandler = () => {
-		dispatch(createProduct());
+	const createRecipeHandler = () => {
+		dispatch(createRecipe())
 	};
 
 	return (
 		<>
 			<Row className='align-tems-center'>
 				<Col>
-					<h1>Products</h1>
+					<h1>Recipes</h1>
 				</Col>
 				<Col className='text-right'>
-					<Button className='my-3' onClick={createProductHandler}>
-						<i className='fas fa-plus'></i> Create Product
+					<Button className='my-3' onClick={createRecipeHandler}>
+						<i className='fas fa-plus'></i> Create Recipe
 					</Button>
 				</Col>
 			</Row>
-			{loadingDelete && <Loader />}
-			{errorDelete && <Message variant='danger'>{errorDelete}</Message>}
+			{/* {loadingDelete && <Loader />}
+			{errorDelete && <Message variant='danger'>{errorDelete}</Message>} */}
 			{loadingCreate && <Loader />}
 			{errorCreate && <Message variant='danger'>{errorCreate}</Message>}
 			{loading ? (
@@ -90,25 +86,25 @@ const ProductListScreen = () => {
 						<tr>
 							<th>ID</th>
 							<th>NAME</th>
-							<th>PRICE</th>
-							<th>CATEGORY</th>
+							<th>TYPE</th>
+							<th>USER</th>
 							<th>BRAND</th>
 							<th></th>
 						</tr>
 					</thead>
 					<tbody>
-						{products.map((product) => (
-							<tr key={product._id}>
-								<td>{product._id}</td>
-								<td>{product.name}</td>
+						{recipes.map((recipe) => (
+							<tr key={recipe._id}>
+								<td>{recipe._id}</td>
+								<td>{recipe.name}</td>
 
-								<td>${product.price}</td>
+								<td>{recipe.type}</td>
 
-								<td>{product.category}</td>
+								<td>{recipe.user}</td>
 
-								<td>{product.brand}</td>
+								<td>{recipe.brand}</td>
 								<td>
-									<LinkContainer to={`/admin/product/${product._id}/edit`}>
+									<LinkContainer to={`/admin/recipe/${recipe._id}/edit`}>
 										<Button variant='light' className='btn-sm'>
 											<i className='fas fa-edit'></i>
 										</Button>
@@ -116,7 +112,7 @@ const ProductListScreen = () => {
 									<Button
 										variant='red'
 										className='btn-sm'
-										onClick={() => deleteHandler(product._id)}
+										onClick={() => deleteHandler(recipe._id)}
 									>
 										<i className='fas fa-trash'></i>
 									</Button>
@@ -130,4 +126,4 @@ const ProductListScreen = () => {
 	);
 };
 
-export default ProductListScreen;
+export default RecipeListScreen;
