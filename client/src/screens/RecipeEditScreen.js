@@ -7,6 +7,7 @@ import Loader from '../components/Loader';
 import { listRecipeDetails, updateRecipe } from '../actions/recipeActions';
 import FormContainer from '../components/FormContainer';
 import { RECIPE_UPDATE_RESET } from '../constants/recipeConstants';
+import SimpleFileUpload from 'react-simple-file-upload';
 
 const RecipeEditScreen = () => {
 	const [name, setName] = useState('');
@@ -114,6 +115,12 @@ const RecipeEditScreen = () => {
 		setIngredients(newArr);
 	};
 
+	function handleFile(url) {
+		
+			setImage(url);
+		
+	}
+
 	return (
 		<>
 			<Link to='/admin/recipeList' className='btn btn-light my-3'>
@@ -158,6 +165,16 @@ const RecipeEditScreen = () => {
 								onChange={(e) => setImage(e.target.value)}
 							></Form.Control>
 						</Form.Group>
+						<div>
+						<SimpleFileUpload
+							apiKey='5af8bfef1fbeedd25af3de7ae9e6b36a'
+							onSuccess={handleFile}
+							preview={false}
+						/>
+						<p>Upload a pic</p>
+						<p>Click to browse or drag and drop</p>
+						<p>Max of 4 pics</p>
+					</div>
 
 						<Row>
 							<Col>
