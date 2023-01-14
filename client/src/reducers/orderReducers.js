@@ -170,7 +170,7 @@ export const orderDeliverReducer = (state = {}, action) => {
 				error: action.payload,
 			};
 
-			case ORDER_CREATE_RESET:
+			case ORDER_DELIVER_RESET:
 				return {}
 
 		

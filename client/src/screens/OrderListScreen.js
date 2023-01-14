@@ -8,6 +8,7 @@ import Message from '../components/Message';
 import Loader from '../components/Message';
 
 import { getOrderList, deliverOrder } from '../actions/orderActions';
+import { ORDER_DELIVER_RESET } from '../constants/orderConstants';
 
 const OrderListScreen = () => {
 	const dispatch = useDispatch();
@@ -28,11 +29,17 @@ const OrderListScreen = () => {
 		} else {
 			navigate('/login');
 		}
+
+		if(successDeliver){
+		dispatch({type: ORDER_DELIVER_RESET})
+	}
 	}, [dispatch, navigate, userInfo, successDeliver]);
 
   const deliverHandler = (id) => {
 dispatch(deliverOrder(id))
   }
+
+	
 
 	return (
 		<>
@@ -79,8 +86,8 @@ dispatch(deliverOrder(id))
 								<td><LinkContainer to={`/orders/${order._id}`}>
                   <Button variant='light' className='btn-sm'>Details</Button>
                   </LinkContainer>
-                  
-                  <Button variant='light' className='btn-sm' onClick={() => deliverHandler(order._id)}>Delivered</Button>
+                  {userInfo && userInfo.isAdmin && order.isPaid && !order.isDelivered &&
+                  <Button variant='light' className='btn-sm' onClick={() => deliverHandler(order._id)}>Delivered</Button>}
                   
                   
                   </td>

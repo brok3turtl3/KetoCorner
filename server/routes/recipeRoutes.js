@@ -7,11 +7,13 @@ import {
 	getRecipes,
 	getRecipeById,
 	createRecipe,
-	updateRecipe
+	updateRecipe,
+	createRecipeReview
 } from '../controllers/recipeController.js';
 
 router.get('/', getRecipes);
 router.put('/:id', protect, admin, updateRecipe)
+router.post('/:id/reviews', protect, createRecipeReview)
 router.post('/', protect, admin, createRecipe)
 
 router.get('/:id', getRecipeById);

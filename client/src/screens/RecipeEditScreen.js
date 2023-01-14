@@ -113,6 +113,7 @@ const RecipeEditScreen = () => {
 		let newArr = [...ingredients];
 		newArr.push('New ingredient');
 		setIngredients(newArr);
+		console.log(process.env.SIMPLE_FILE_UPLOAD_KEY)
 	};
 
 	function handleFile(url) {
@@ -167,7 +168,7 @@ const RecipeEditScreen = () => {
 						</Form.Group>
 						<div>
 						<SimpleFileUpload
-							apiKey='5af8bfef1fbeedd25af3de7ae9e6b36a'
+							apiKey= '5af8bfef1fbeedd25af3de7ae9e6b36a'
 							onSuccess={handleFile}
 							preview={false}
 						/>
