@@ -114,7 +114,7 @@ const createRecipeReview = asyncHandler(async (req, res) => {
 
 
 		await recipe.save();
-		res.status(201).json({message: 'Review added'})
+		res.status(201).json(recipe)
 		
 	} else {
 		res.status(404);

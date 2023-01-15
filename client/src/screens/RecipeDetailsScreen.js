@@ -11,7 +11,7 @@ import {
 	Form,
 } from 'react-bootstrap';
 import Rating from '../components/Rating';
-import { listRecipeDetails } from '../actions/recipeActions';
+import { listRecipeDetails, createRecipeReview } from '../actions/recipeActions';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 
@@ -50,12 +50,13 @@ const RecipeDetailsScreen = () => {
 								<ListGroup.Item>
 									<h3>{recipe.name}</h3>
 								</ListGroup.Item>
+								{ recipe.reviews.length === 0 ?(<Message>No reviews yet</Message>) : (
 								<ListGroup.Item>
 									<Rating
 										value={recipe.rating}
-										text={` ${recipe.numReviews} ratings`}
+										text={` ${recipe.reviews.length} ratings`}
 									></Rating>
-								</ListGroup.Item>
+								</ListGroup.Item>) }
 
 								<ListGroup.Item>
 									Description: {recipe.description}
@@ -95,6 +96,21 @@ const RecipeDetailsScreen = () => {
 							  ))
 							: null}
 					</ListGroup>
+
+					{recipe.reviews.length > 0 ?(
+					<ListGroup className='mt-4'>
+						<ListGroup.Item>
+							<h2>Reviews</h2>
+						</ListGroup.Item>
+						{ recipe.reviews.map((review, index) => (
+									<ListGroup.Item key={review._id}>
+										<strong>{review.name}</strong>
+										<Rating value={review.rating}></Rating>
+										<p>{review.createdAt.substring(0,10)}</p>
+										<p>{review.comment}</p>
+									</ListGroup.Item>
+							  ))}
+					</ListGroup>) : (<Message>No reviews yet</Message>)}
 				</>
 			)}
 		</>
