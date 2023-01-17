@@ -122,4 +122,19 @@ const createRecipeReview = asyncHandler(async (req, res) => {
 	}
 });
 
-export { getRecipes, getRecipeById, createRecipe, updateRecipe, createRecipeReview };
+// ENDPOINT  DELETE api/recipes/:id
+// PURPOSE   Remove a recipe by Id
+// ACCESS    Public
+const deleteRecipeById = asyncHandler(async (req, res) => {
+	const recipe = await Recipe.findById(req.params.id);
+
+	if (recipe) {
+		await recipe.remove()
+		res.json({message: 'Recipe removed'})
+	} else {
+		res.status(404);
+		throw new Error('Recipe not found');
+	}
+});
+
+export { getRecipes, getRecipeById, createRecipe, updateRecipe, createRecipeReview, deleteRecipeById };

@@ -9,7 +9,8 @@ import Loader from '../components/Message';
 
 import {
 	listRecipes,
-  createRecipe
+  createRecipe,
+	deleteRecipe
 } from '../actions/recipeActions';
 
 import { RECIPE_CREATE_RESET } from '../constants/recipeConstants';
@@ -27,12 +28,12 @@ const RecipeListScreen = () => {
   const recipeCreate = useSelector((state) => state.recipeCreate);
   const { loading:loadingCreate, error: errorCreate, success: successCreate, recipe: createdRecipe} = recipeCreate
 
-	// const productDelete = useSelector((state) => state.productDelete);
-	// const {
-	// 	loading: loadingDelete,
-	// 	error: errorDelete,
-	// 	success: successDelete,
-	// } = productDelete;
+	const recipeDelete = useSelector((state) => state.recipeDelete);
+	const {
+		loading: loadingDelete,
+		error: errorDelete,
+		success: successDelete,
+	} = recipeDelete;
 	
 
   useEffect(() => {
@@ -47,13 +48,13 @@ const RecipeListScreen = () => {
     }
 
     dispatch(listRecipes())
-  },[dispatch, userInfo, successCreate, navigate, createdRecipe])
+  },[dispatch, userInfo, successCreate, navigate, createdRecipe, recipeDelete])
 
 	const deleteHandler = (id) => {
-		// if (window.confirm('Are you sure?')) {
-		// 	dispatch(deleteProduct(id));
-		// }
-    console.log('TEST')
+		if (window.confirm('Are you sure?')) {
+			dispatch(deleteRecipe(id));
+		}
+    
 	};
 
 	const createRecipeHandler = () => {

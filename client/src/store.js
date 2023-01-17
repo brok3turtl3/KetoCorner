@@ -6,14 +6,15 @@ import {
 	productDetailsReducer,
 	productDeleteReducer,
 	productCreateReducer,
-	productUpdateReducer
+	productUpdateReducer,
 } from './reducers/productReducers';
 import {
 	recipeListReducer,
 	recipeDetailsReducer,
 	recipeCreateReducer,
 	recipeUpdateReducer,
-	recipeCreateReviewReducer
+	recipeCreateReviewReducer,
+	recipeDeleteReducer,
 } from './reducers/recipeReducers';
 import {
 	userLoginReducer,
@@ -22,7 +23,7 @@ import {
 	userUpdateProfileReducer,
 	userListReducer,
 	userDeleteReducer,
-	userUpdateReducer
+	userUpdateReducer,
 } from './reducers/userReducers';
 import { cartReducer } from './reducers/cartReducers';
 import {
@@ -31,7 +32,7 @@ import {
 	orderPayReducer,
 	orderListMyReducer,
 	orderListReducer,
-	orderDeliverReducer
+	orderDeliverReducer,
 } from './reducers/orderReducers';
 
 const reducer = combineReducers({
@@ -43,6 +44,7 @@ const reducer = combineReducers({
 	recipeCreate: recipeCreateReducer,
 	recipeUpdate: recipeUpdateReducer,
 	recipeCreateReview: recipeCreateReviewReducer,
+	recipeDelete: recipeDeleteReducer,
 	cart: cartReducer,
 	userLogin: userLoginReducer,
 	userRegister: userRegisterReducer,
@@ -59,8 +61,7 @@ const reducer = combineReducers({
 	orderListMy: orderListMyReducer,
 	productDelete: productDeleteReducer,
 	productCreate: productCreateReducer,
-	productUpdate: productUpdateReducer
-	
+	productUpdate: productUpdateReducer,
 });
 
 const cartItemsFromStorage = localStorage.getItem('cartItems')
