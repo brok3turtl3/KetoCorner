@@ -37,6 +37,8 @@ const App = () => {
 						<Route path='/profile' element={<ProfileScreen />} />
 						<Route path='/' element={<HomePage />} />
 						<Route path='/recipes' element={<RecipesScreen />} />
+						<Route path='/recipes/search/:keyword' element={<RecipesScreen />} />
+
 						<Route path='/recipes/:id' element={<RecipeDetailsScreen />} />
 						<Route path='/store' element={<Store />} />
 						<Route path='/products/:id' element={<ProductScreen />} />

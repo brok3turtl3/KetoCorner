@@ -1,24 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
 import Recipe from '../components/Recipe';
 import { listRecipes } from '../actions/recipeActions';
 import Loader from '../components/Loader.js';
 import Message from '../components/Message.js';
+import SearchBox from '../components/SearchBox'
 
 const Recipes = () => {
 	const recipeList = useSelector((state) => state.recipeList);
 	const { loading, error, recipes } = recipeList;
 
+	let { keyword } = useParams()
+
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		dispatch(listRecipes());
-	}, [dispatch]);
+		dispatch(listRecipes(keyword));
+	}, [dispatch, keyword]);
 
 	return (
 		<>
 			<h1>Our Recipes</h1>
+			<SearchBox />
 			
 			{loading ? (
 				<Loader />

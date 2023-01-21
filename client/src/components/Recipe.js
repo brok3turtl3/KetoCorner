@@ -11,7 +11,7 @@ const Recipe = ({ recipe }) => {
 	return (
 		<Card className='my-3 p-3 rounded'>
 			<Link to={`/recipes/${recipe._id}`}>
-				<Card.Img src={recipe.image} variant='top' />
+				<Card.Img src={recipe.image}  variant='top' />
 			</Link>
 
 			<Card.Body>

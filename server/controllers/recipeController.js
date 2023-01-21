@@ -5,7 +5,15 @@ import Recipe from '../models/recipeModel.js';
 //PURPOSE   Retrieve all recipes
 //ACCESS    Public
 const getRecipes = asyncHandler(async (req, res) => {
-	const recipes = await Recipe.find({});
+
+const keyword = req.query.keyword ? {
+	name: {
+		$regex: req.query.keyword,
+		$options: 'i'
+	}
+} : {}
+
+	const recipes = await Recipe.find({...keyword});
 	res.json(recipes);
 });
 
