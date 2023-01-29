@@ -4,6 +4,9 @@
 	"description": "Keto lifestyle website",
 	"main": "server.js",
 	"type": "module",
+	"engines": {
+		"node": "16.13.1"
+	},
 	"scripts": {
 		"start": "node server/server.js",
 		"server": "nodemon server/server",
