@@ -12,6 +12,7 @@ import SimpleFileUpload from 'react-simple-file-upload';
 const RecipeEditScreen = () => {
 	const [name, setName] = useState('');
 	const [type, setType] = useState('');
+
 	const [image, setImage] = useState('');
 	const [description, setDescription] = useState('');
 	const [totalTime, setTotalTime] = useState(0);
@@ -91,7 +92,7 @@ const RecipeEditScreen = () => {
 		);
 	};
 
-  const updateDirections = (index) => (e) => {
+	const updateDirections = (index) => (e) => {
 		let newArr = [...directions];
 		newArr[index] = e.target.value;
 		setDirections(newArr);
@@ -113,13 +114,11 @@ const RecipeEditScreen = () => {
 		let newArr = [...ingredients];
 		newArr.push('New ingredient');
 		setIngredients(newArr);
-		console.log(process.env.SIMPLE_FILE_UPLOAD_KEY)
+		console.log(process.env.SIMPLE_FILE_UPLOAD_KEY);
 	};
 
 	function handleFile(url) {
-		
-			setImage(url);
-		
+		setImage(url);
 	}
 
 	return (
@@ -157,6 +156,17 @@ const RecipeEditScreen = () => {
 							></Form.Control>
 						</Form.Group>
 
+						<Form.Group controlId='description'>
+							<Form.Label>Description</Form.Label>
+							<Form.Control
+								as='textarea'
+								rows={4}
+								placeholder='Enter description'
+								value={description}
+								onChange={(e) => setDescription(e.target.value)}
+							></Form.Control>
+						</Form.Group>
+
 						<Form.Group controlId='image'>
 							<Form.Label>Image</Form.Label>
 							<Form.Control
@@ -167,15 +177,15 @@ const RecipeEditScreen = () => {
 							></Form.Control>
 						</Form.Group>
 						<div>
-						<SimpleFileUpload
-							apiKey= '5af8bfef1fbeedd25af3de7ae9e6b36a'
-							onSuccess={handleFile}
-							preview={false}
-						/>
-						<p>Upload a pic</p>
-						<p>Click to browse or drag and drop</p>
-						<p>Max of 4 pics</p>
-					</div>
+							<SimpleFileUpload
+								apiKey='5af8bfef1fbeedd25af3de7ae9e6b36a'
+								onSuccess={handleFile}
+								preview={false}
+							/>
+							<p>Upload a pic</p>
+							<p>Click to browse or drag and drop</p>
+							<p>Max of 4 pics</p>
+						</div>
 
 						<Row>
 							<Col>
@@ -283,7 +293,7 @@ const RecipeEditScreen = () => {
 								></Form.Control>
 							</Form.Group>
 						))}
-            <Button type='button' onClick={addDirection} variant='primary'>
+						<Button type='button' onClick={addDirection} variant='primary'>
 							Add Direction
 						</Button>
 
