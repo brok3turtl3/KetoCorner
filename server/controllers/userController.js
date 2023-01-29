@@ -1,6 +1,6 @@
 import asyncHandler from 'express-async-handler';
 import User from '../models/userModel.js';
-import generateToken from '../utils/GenerateToken.js';
+import generateToken from '../utils/generateToken.js';
 
 //ENDPOINT  POST api/users
 //PURPOSE   Register a new user
@@ -109,25 +109,22 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 //ACCESS    Private / Admin
 const getUsers = asyncHandler(async (req, res) => {
 	const users = await User.find({});
-	res.json(users)
-	
+	res.json(users);
 });
 
 //ENDPOINT  DELETE api/users/:id
 //PURPOSE   Delete a user
 //ACCESS    Private / Admin
 const deleteUser = asyncHandler(async (req, res) => {
-	const user = await User.findById(req.params.id)
+	const user = await User.findById(req.params.id);
 
-	if(user){
-		await user.remove()
-		res.json({ message: 'User removed'})
-	}else{
-		res.status(404)
-		throw new Error('User not found')
+	if (user) {
+		await user.remove();
+		res.json({ message: 'User removed' });
+	} else {
+		res.status(404);
+		throw new Error('User not found');
 	}
-	
-	
 });
 
 //ENDPOINT  GET api/users/:id
@@ -136,14 +133,12 @@ const deleteUser = asyncHandler(async (req, res) => {
 const getUserById = asyncHandler(async (req, res) => {
 	const user = await User.findById(req.params.id).select('-password');
 
-	if(user){
-		res.json(user)
-	}else{
-		res.status(404)
-		throw new Error('User not found')
+	if (user) {
+		res.json(user);
+	} else {
+		res.status(404);
+		throw new Error('User not found');
 	}
-	
-	
 });
 
 //ENDPOINT  PUT api/users/:id
@@ -155,7 +150,7 @@ const updateUser = asyncHandler(async (req, res) => {
 	if (user) {
 		user.name = req.body.name || user.name;
 		user.email = req.body.email || user.email;
-		user.isAdmin = req.body.isAdmin ?? user.isAdmin
+		user.isAdmin = req.body.isAdmin ?? user.isAdmin;
 
 		const updatedUser = await user.save();
 
@@ -164,7 +159,6 @@ const updateUser = asyncHandler(async (req, res) => {
 			name: updatedUser.name,
 			email: updatedUser.email,
 			isAdmin: updatedUser.isAdmin,
-			
 		});
 	} else {
 		res.status(404);
@@ -172,4 +166,13 @@ const updateUser = asyncHandler(async (req, res) => {
 	}
 });
 
-export { authUser, getUserProfile, registerUser, updateUserProfile, getUsers, deleteUser, getUserById, updateUser };
+export {
+	authUser,
+	getUserProfile,
+	registerUser,
+	updateUserProfile,
+	getUsers,
+	deleteUser,
+	getUserById,
+	updateUser,
+};
