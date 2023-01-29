@@ -15,9 +15,6 @@ app.use(express.json());
 
 connectDB();
 
-app.get('/', (req, res) => {
-	res.send('API is RUNNING!');
-});
 
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes)
@@ -25,6 +22,18 @@ app.use('/api/orders', orderRoutes)
 app.use('/api/recipes', recipeRoutes)
 
 app.get('/api/config/paypal', (req, res) => res.send(process.env.PAYPAL_CLIENT_ID))
+
+const __dirname = path.resolve();
+
+if (
+	process.env.NODE_ENV === 'production' ||
+	process.env.NODE_ENV === 'staging'
+) {
+	app.use(express.static('client/build'));
+	app.get('/', (req, res) => {
+		res.sendFile(path.join(__dirname + '/client/build/index.html'));
+	});
+}
 
 
 app.use(notFound);
