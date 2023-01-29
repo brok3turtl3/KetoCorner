@@ -97,7 +97,7 @@ const RecipeDetailsScreen = () => {
 						{recipe.ingredients
 							? recipe.ingredients.map((ingredient, index) => (
 									<ListGroup.Item key={index}>
-										{index + 1}. {ingredient}
+										 {ingredient}
 									</ListGroup.Item>
 							  ))
 							: null}
