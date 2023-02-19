@@ -77,7 +77,7 @@ const RecipeDetailsScreen = () => {
 								)}
 
 								<ListGroup.Item>
-									Description: {recipe.description}
+									{recipe.description}
 								</ListGroup.Item>
 								<ListGroup.Item>
 									Total Cals / Serv: {recipe.totalCals} Fat: {recipe.fat}{' '}
