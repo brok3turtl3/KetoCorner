@@ -28,8 +28,8 @@ const App = () => {
 	return (
 		<Router>
 			<Header />
-			<main className='py-3'>
-				<Container className='justify-content-center'>
+			<main>
+				<Container >
 					
 					<Routes>
 						<Route path='/login' element={<LoginScreen />} />
