@@ -18,13 +18,13 @@ const HomePage = () => {
 					<h1 className='text-success '>Welcome to KetoCorner!</h1>
 					<p>
 						Do you ever find yourself wanting to make a meal that you have made
-						before, that you know you realyy enjoyed, but cannot remember the
+						before, that you know you really enjoyed, but cannot remember the
 						exact ingredients or process? Well, that was happening to us all the
 						time!
 					</p>
 					<p>
 						The idea for this site started when my wife and I wanted to have a
-						place where we could store all our recipes that we enjoyed in one
+						place where we could store all the recipes that we enjoyed in one
 						spot. We wanted to have a place where we could see all our favorite
 						meals at a glance and then pull up the recipes quickly and easily.
 					</p>
@@ -51,13 +51,12 @@ const HomePage = () => {
 				<Col md={8} className='my-auto text-center order-md-2'>
 					<h1 className='text-success'>What you WILL find here..</h1>
 					<p>
-						Great food! Every recipe that we put on this site has been made by
-						us and tried by us. We have tried to keep most the recipes very
-						simple to make with common ingredients. If we try a recipe out and
-						it is not something we would make again then it does not go on the
-						site. We have lot's of ideas for expanding the what the site offers
-						to it's visitors but for now we are focusing on building a large
-						database of recipes.
+						Great food! Every recipe we put on this site has been made and tried
+						by us. We have tried to keep most recipes simple to make with common
+						ingredients. If we try a recipe out and it is not something we would
+						make again then it does not go on the site. We have lots of ideas
+						for expanding what the site offers to its visitors but for now, we
+						are focusing on building a large database of recipes.
 					</p>
 					<p> Have something you would like us to try? Send in the recipe!</p>
 				</Col>
@@ -80,8 +79,8 @@ const HomePage = () => {
 				<Col md={8} className='my-auto text-center order-md-1'>
 					<h1 className='text-success'>What you will NOT find here..</h1>
 					<p>
-						Professional medical or dietary advice. We are not licenced,
-						certified or in any way anything other than home cooks sharing our
+						Professional medical or dietary advice. We are not licensed,
+						certified, or in any way anything other than home cooks sharing our
 						personal experience with the Keto lifestyle. Switching to this type
 						of diet can be stressful and difficult. Everyone reacts differently
 						and there can be side effects. We encourage everyone to do their own
@@ -95,7 +94,7 @@ const HomePage = () => {
 					<h1 className='text-success'>We Want To Hear From You!</h1>
 					<p>
 						If you try any of the recipes make sure to leave a review! Also,
-						this is more or less a hobby for us and would love to hear any
+						this is more or less a hobby for us, and we would love to hear any
 						feedback you have. Whether it is about the recipes or just the
 						website in general. Let us know what you think!
 					</p>
