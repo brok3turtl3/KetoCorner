@@ -27,20 +27,20 @@ const Header = () => {
 				<LinkContainer to='/' >
 					<Navbar.Brand className='text-success'>
 						<h1>KetoCorner</h1>
-						<p>Don't blame the bacon for what the bread did!</p>
+						<p className="d-none d-sm-block">Don't blame the bacon for what the bread did!</p>
 					</Navbar.Brand>
 				</LinkContainer>
 
 				<Navbar.Toggle aria-controls='navbar' onClick={toggleExpanded} />
 				<Navbar.Collapse id='navbar' expanded={expanded} >
 					<Nav className='ml-auto'>
-						<LinkContainer to='/recipes'>
-							<Nav.Link as={NavLink} className='px-3'>
+						<LinkContainer to='/recipes' >
+							<Nav.Link className='px-3' >
 								<i className='fas fa-shopping-cart'></i> Recipes
 							</Nav.Link>
 						</LinkContainer>
 						<LinkContainer to='/store'>
-							<Nav.Link className='px-3'>
+							<Nav.Link className='px-3' >
 								<i className='fas fa-shopping-cart'></i> Store
 							</Nav.Link>
 						</LinkContainer>
