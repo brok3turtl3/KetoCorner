@@ -36,11 +36,11 @@ const ProductScreen = () => {
 				Go Back
 			</Link>
 
-			{ loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : <Row>
-				<Col md={6}>
+			{ loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : <Row >
+				<Col lg={4} className='text-center'>
 					<Image src={product.image} alt={product.name} fluid></Image>
 				</Col>
-				<Col md={3}>
+				<Col lg={5}>
 					<ListGroup variant='flush'>
 						<ListGroup.Item>
 							<h3>{product.name}</h3>
@@ -55,7 +55,7 @@ const ProductScreen = () => {
 						<ListGroup.Item>Description: {product.description}</ListGroup.Item>
 					</ListGroup>
 				</Col>
-				<Col md={3}>
+				<Col lg={3}>
 					<Card>
 						<ListGroup variant='flush'>
 							<ListGroup.Item>
